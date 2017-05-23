@@ -1,0 +1,84 @@
+<script type="text/javascript">
+    RED.nodes.registerType('azureiothub',{
+        category: 'cloud',
+        color: '#00abec',
+        defaults: {
+            name: {value:"Azure IoT Hub"},
+            protocol: {value:"MQTT"}
+        },
+        inputs:1,
+        outputs:1,
+        icon: "azureiothub.png",
+        label: function() {
+            return this.name||"Azure IoT Hub";
+        },
+        credentials: {
+            hostname: {type:"text"}
+            deviceId: {type:"text"}
+            sharedaccesskey: {type:"text"}
+        }
+    });
+    RED.nodes.registerType('azureiothubregistry',{
+        category: 'cloud',
+        color: '#00abec',
+        defaults: {
+            name: {value:"Azure IoT Hub Registry"}
+        },
+        inputs:1,
+        outputs:1,
+        icon: "azureiothub.png",
+        label: function() {
+            return this.name||"Azure IoT Hub Registry";
+        },
+        credentials: {
+            connectionString: {type:"text"}
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="azureiothub">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-protocol"><i class="icon-tag"></i> Protocol</label>
+        <select id="node-input-protocol">
+            <option>HTTP</option>
+            <option>AMQP</option>
+            <option>MQTT</option>
+            <option>AMQPWS</option>
+        </select>
+    </div>
+    <div class="form-row">
+        <label for="node-input-hostname"><i class="fa fa-bookmark"></i> Hostname</label>
+        <input type="text" id="node-input-hostname">
+    </div>
+    <div class="form-row">
+        <label for="node-input-deviceid"><i class="fa fa-bookmark"></i> DeviceId</label>
+        <input type="text" id="node-input-deviceid">
+    </div>
+    <div class="form-row">
+        <label for="node-input-sharedaccesskey"><i class="fa fa-bookmark"></i> SharedAccessKey</label>
+        <input type="text" id="node-input-sharedaccesskey">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="azureiothub">
+    <p>A simple node that sends the message payloads to Azure IoT Hub</p>
+</script>
+
+<script type="text/x-red" data-template-name="azureiothubregistry">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-connectionString"><i class="fa fa-bookmark"></i> connectionString</label>
+        <input type="text" id="node-input-connectionString">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="azureiothubregistry">
+    <p>A simple node that registers devices with Azure IoT Hub</p>
+</script>
